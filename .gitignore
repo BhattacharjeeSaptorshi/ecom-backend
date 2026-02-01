@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-/ecom-backend/logs
+/ecom-backend/logs/*.*
