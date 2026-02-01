@@ -3,6 +3,8 @@ package com.ecom.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +26,17 @@ import com.ecom.project.payload.CategoryResponse;
 import com.ecom.project.service.CategoryService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api")
+@Slf4j
 public class CategoryController {
 	
 	@Autowired
 	private CategoryService categoryService;
+	
+	//private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 	
 //	public CategoryController(CategoryService categoryService) {
 //		super();
@@ -68,6 +74,7 @@ public class CategoryController {
 	public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categotyDTO)
 	{
 		CategoryDTO savedCategoryDTO = categoryService.createCategory(categotyDTO);
+		log.info("Category creted - logging from controller");
 		return new ResponseEntity<>(savedCategoryDTO, HttpStatus.CREATED);
 	}
 	

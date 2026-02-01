@@ -1,0 +1,9 @@
+2026-02-01 - Application shutdown requested.
+2026-02-01 - Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-01 - Pausing ProtocolHandler ["http-nio-8080"]
+2026-02-01 - Graceful shutdown complete
+2026-02-01 - Stopping ProtocolHandler ["http-nio-8080"]
+2026-02-01 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-01 - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2026-02-01 - HikariPool-1 - Shutdown initiated...
+2026-02-01 - HikariPool-1 - Shutdown completed.
