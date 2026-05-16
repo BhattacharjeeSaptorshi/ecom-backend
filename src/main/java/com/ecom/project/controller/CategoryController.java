@@ -74,7 +74,7 @@ public class CategoryController {
 	public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categotyDTO)
 	{
 		CategoryDTO savedCategoryDTO = categoryService.createCategory(categotyDTO);
-		log.info("Category creted - logging from controller");
+		log.info("Category creaq:ted - logging from controller");
 		return new ResponseEntity<>(savedCategoryDTO, HttpStatus.CREATED);
 	}
 	
