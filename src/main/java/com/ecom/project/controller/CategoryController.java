@@ -3,6 +3,8 @@ package com.ecom.project.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api")
 @Slf4j
+@Tag(name = "Category API's", description = "CRUD Operations on Category API.")
 public class CategoryController {
 	
 	@Autowired
@@ -49,6 +52,7 @@ public class CategoryController {
 //	}
 
 	@GetMapping("/public/categories")
+	@Operation(summary = "Get All Categories.")
 	public ResponseEntity<CategoryResponse> getAllCategories(
 									@RequestParam(name="pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false)Integer pageNumber,
 									@RequestParam(name="pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false)Integer pageSize,
@@ -60,6 +64,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping("public/categories/{categoryId}")
+	@Operation(summary = "Get a particular category.")
 	public ResponseEntity<CategoryDTO> getCategory(@PathVariable Long categoryId)
 	{
 		try {
@@ -71,14 +76,16 @@ public class CategoryController {
 	}
 	
 	@PostMapping("/public/categories")
+	@Operation(summary = "Create a particular category.")
 	public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categotyDTO)
 	{
 		CategoryDTO savedCategoryDTO = categoryService.createCategory(categotyDTO);
-		log.info("Category creaq:ted - logging from controller");
+		log.info("Category created - logging from controller");
 		return new ResponseEntity<>(savedCategoryDTO, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/admin/categories/{categoryId}")
+	@Operation(summary = "Delete a particular category.")
 	public ResponseEntity<CategoryDTO> deleteCategory(@PathVariable Long categoryId)
 	{
 		CategoryDTO deletedObject = categoryService.deleteCategory(categoryId);
@@ -86,6 +93,7 @@ public class CategoryController {
 	}
 	
 	@PutMapping("/public/categories/{categoryId}")
+	@Operation(summary = "Update a particular category.")
 	public ResponseEntity<CategoryDTO> updateCategory(@Valid @RequestBody CategoryDTO categoryDTO, @PathVariable Long categoryId)
 	{
 		CategoryDTO savedCategoryDTO = categoryService.updateCategory(categoryDTO, categoryId);
